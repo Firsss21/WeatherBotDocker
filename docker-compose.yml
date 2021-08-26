@@ -1,0 +1,15 @@
+version: '3.4'
+# Список сервисов (контейнеров)
+services:
+    java:
+        build: ./images/java/
+        links:
+            - mongo
+    mongo:
+        image: mongo:3.4.2
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD=root
+            - MONGO_INITDB_DATABASE=main
+        ports:
+            - "27017:27017"
